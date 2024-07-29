@@ -164,7 +164,7 @@
             const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-            countdownElement.innerHTML = `Countdown to 23 September 2024: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+            countdownElement.innerHTML = `Countdown to 23 September 2024: ${days}Days ${hours}Hours ${minutes}Minutes ${seconds}Seconds`;
 
             if (timeDifference < 0) {
                 clearInterval(countdownInterval);
