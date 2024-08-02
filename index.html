@@ -6,31 +6,36 @@
     <title>Training Schedule</title>
     <style>
         body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f9;
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f7fa;
             color: #333;
             line-height: 1.6;
         }
-        .task {
-            margin: 10px 0;
-            padding: 15px;
-            border: 1px solid #ddd;
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
+            padding: 30px;
+        }
+        .task {
+            margin: 20px 0;
+            padding: 20px;
+            border-left: 4px solid #3498db;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            transition: all 0.3s ease;
         }
         .task:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .hidden {
-            display: none;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
         h1 {
             font-size: 2.5em;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             color: #2c3e50;
             text-align: center;
             text-transform: uppercase;
@@ -39,30 +44,70 @@
         h2 {
             margin-top: 30px;
             color: #34495e;
-            font-size: 1.5em;
+            font-size: 1.8em;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
         }
         strong {
             color: #e74c3c;
-            font-weight: bold;
+            font-weight: 600;
         }
         .task strong {
             display: block;
             margin-bottom: 10px;
             font-size: 1.2em;
+            color: #2c3e50;
         }
         #countdown {
             font-size: 1.5em;
             text-align: center;
-            margin-top: 20px;
+            margin-top: 30px;
             color: #e74c3c;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .navigation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .nav-button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        .nav-button:hover {
+            background-color: #2980b9;
+        }
+        #currentDate {
+            margin: 0 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2c3e50;
         }
     </style>
 </head>
 <body>
-    <h1>Training Schedule</h1>
+    <div class="container">
+        <h1>Training Schedule</h1>
 
-    <div id="schedule"></div>
-    <div id="countdown"></div>
+        <div class="navigation">
+            <button id="prevDay" class="nav-button">&lt;</button>
+            <span id="currentDate"></span>
+            <button id="nextDay" class="nav-button">&gt;</button>
+        </div>
+
+        <div id="schedule"></div>
+        <div id="countdown"></div>
+    </div>
 
     <script>
         const schedule = [
@@ -132,24 +177,40 @@
             { date: '2024-08-25', task: 'Rest' }
         ];
 
-        const today = new Date().toISOString().split('T')[0];
-        const tomorrow = new Date();
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        const tomorrowDate = tomorrow.toISOString().split('T')[0];
-
+        let currentDate = new Date().toISOString().split('T')[0];
         const scheduleContainer = document.getElementById('schedule');
+        const currentDateElement = document.getElementById('currentDate');
 
-        schedule.forEach(item => {
-            const taskDate = item.date;
-            const taskContent = item.task;
-            if (taskDate === today || taskDate === tomorrowDate) {
-                const taskDiv = document.createElement('div');
-                taskDiv.classList.add('task');
-                const dateLabel = taskDate === today ? ' (Today)' : ' (Tomorrow)';
-                taskDiv.innerHTML = `<strong>${taskDate}${dateLabel}</strong><br>${taskContent}`;
-                scheduleContainer.appendChild(taskDiv);
+        function displayTask(date) {
+            const task = schedule.find(item => item.date === date);
+            if (task) {
+                scheduleContainer.innerHTML = `
+                    <div class="task">
+                    ${task.task}
+                    </div>
+                `;
+                currentDateElement.textContent = task.date;
+            } else {
+                scheduleContainer.innerHTML = '<p>No task scheduled for this date.</p>';
+                currentDateElement.textContent = date;
             }
-        });
+        }
+
+        function changeDate(direction) {
+            const currentIndex = schedule.findIndex(item => item.date === currentDate);
+            let newIndex = currentIndex + direction;
+
+            if (newIndex >= 0 && newIndex < schedule.length) {
+                currentDate = schedule[newIndex].date;
+                displayTask(currentDate);
+            }
+        }
+
+        document.getElementById('prevDay').addEventListener('click', () => changeDate(-1));
+        document.getElementById('nextDay').addEventListener('click', () => changeDate(1));
+
+        // Initial display
+        displayTask(currentDate);
 
         // Countdown to 23 September 2024
         const countdownElement = document.getElementById('countdown');
@@ -164,7 +225,7 @@
             const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-            countdownElement.innerHTML = `Countdown to 23 September 2024: ${days}Days ${hours}Hours ${minutes}Minutes ${seconds}Seconds`;
+            countdownElement.innerHTML = `<span style="font-size: 0.5em;">Countdown to 23 September 2024: ${days}Days ${hours}Hours ${minutes}Minutes ${seconds}Seconds</span>`;
 
             if (timeDifference < 0) {
                 clearInterval(countdownInterval);
