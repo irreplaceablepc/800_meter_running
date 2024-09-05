@@ -110,74 +110,33 @@
     </div>
 
     <script>
-        const schedule = [
-            // Week 1
-            { date: '2024-07-01', task: 'Warm-up: 10 मिनट की हल्की दौड़<br>मुख्य सत्र: 4 x 400 मीटर दौड़ (1:20 - 1:30 मिनट प्रति दौड़, 90 सेकंड आराम)<br>Cool-down: 10 मिनट की हल्की दौड़' },
-            { date: '2024-07-02', task: 'Strength Training:<br>Squats: 3 सेट x 12 रेप्स<br>Lunges: 3 सेट x 12 रेप्स प्रति पैर<br>Deadlifts: 3 सेट x 10 रेप्स<br>Planks: 3 सेट x 1 मिनट<br>Leg Raises: 3 सेट x 15 रेप्स' },
-            { date: '2024-07-03', task: 'Warm-up: 10 मिनट की हल्की दौड़<br>मुख्य सत्र: 8 x 200 मीटर तेज दौड़ (35 - 40 सेकंड प्रति दौड़, 2 मिनट आराम)<br>Cool-down: 10 मिनट की हल्की दौड़' },
-            { date: '2024-07-04', task: 'Recovery Run: 20-30 मिनट की धीमी दौड़ (5:30 - 6:00 मिनट प्रति किलोमीटर)' },
-            { date: '2024-07-05', task: 'Warm-up: 10 मिनट की हल्की दौड़<br>मुख्य सत्र: 6 x 150 मीटर पहाड़ी दौड़ (25 - 30 सेकंड प्रति दौड़, आराम दौड़ते हुए वापस)<br>Cool-down: 10 मिनट की हल्की दौड़' },
-            { date: '2024-07-06', task: 'Cross-Training: Cycling, swimming, या yoga (45 मिनट)' },
-            { date: '2024-07-07', task: 'Rest' },
-            // Week 2
-            { date: '2024-07-08', task: 'Warm-up: 10 मिनट की हल्की दौड़<br>मुख्य सत्र: 4 x 400 मीटर दौड़ (1:20 - 1:30 मिनट प्रति दौड़, 90 सेकंड आराम)<br>Cool-down: 10 मिनट की हल्की दौड़' },
-            { date: '2024-07-09', task: 'Strength Training:<br>Squats: 3 सेट x 12 रेप्स<br>Lunges: 3 सेट x 12 रेप्स प्रति पैर<br>Deadlifts: 3 सेट x 10 रेप्स<br>Planks: 3 सेट x 1 मिनट<br>Leg Raises: 3 सेट x 15 रेप्स' },
-            { date: '2024-07-10', task: 'Warm-up: 10 मिनट की हल्की दौड़<br>मुख्य सत्र: 8 x 200 मीटर तेज दौड़ (35 - 40 सेकंड प्रति दौड़, 2 मिनट आराम)<br>Cool-down: 10 मिनट की हल्की दौड़' },
-            { date: '2024-07-11', task: 'Recovery Run: 20-30 मिनट की धीमी दौड़ (5:30 - 6:00 मिनट प्रति किलोमीटर)' },
-            { date: '2024-07-12', task: 'Warm-up: 10 मिनट की हल्की दौड़<br>मुख्य सत्र: 6 x 150 मीटर पहाड़ी दौड़ (25 - 30 सेकंड प्रति दौड़, आराम दौड़ते हुए वापस)<br>Cool-down: 10 मिनट की हल्की दौड़' },
-            { date: '2024-07-13', task: 'Cross-Training: Cycling, swimming, या yoga (45 मिनट)' },
-            { date: '2024-07-14', task: 'Rest' },
-            // Week 3
-            { date: '2024-07-15', task: 'Warm-up: 10 मिनट की हल्की दौड़<br>मुख्य सत्र: 3 x 600 मीटर दौड़ (1:50 - 2:00 मिनट प्रति दौड़, 2 मिनट आराम)<br>Cool-down: 10 मिनट की हल्की दौड़' },
-            { date: '2024-07-16', task: 'Strength Training:<br>Push-ups: 3 सेट x 15 रेप्स<br>Pull-ups: 3 सेट x 10 रेप्स<br>Dumbbell Press: 3 सेट x 12 रेप्स<br>Russian Twists: 3 सेट x 20 रेप्स<br>Side Planks: 3 सेट x 1 मिनट प्रति साइड' },
-            { date: '2024-07-17', task: 'Warm-up: 10 मिनट की हल्की दौड़<br>मुख्य सत्र: 15 मिनट की मध्यम गति से दौड़ (4:30 - 5:00 मिनट प्रति किलोमीटर)<br>Cool-down: 10 मिनट की हल्की दौड़' },
-            { date: '2024-07-18', task: 'Warm-up: 10 मिनट की हल्की दौड़<br>मुख्य सत्र: 5 x 300 मीटर दौड़ (50 - 55 सेकंड प्रति दौड़, 1.5 मिनट आराम)<br>Cool-down: 10 मिनट की हल्की दौड़' },
-            { date: '2024-07-19', task: 'Long Run: 40-50 मिनट की धीमी दौड़ (5:30 - 6:00 मिनट प्रति किलोमीटर)' },
-            { date: '2024-07-20', task: 'Rest or light activity' },
-            { date: '2024-07-21', task: 'Rest' },
-            // Week 4
-            { date: '2024-07-22', task: 'Warm-up: 10 मिनट की हल्की दौड़<br>मुख्य सत्र: 3 x 600 मीटर दौड़ (1:50 - 2:00 मिनट प्रति दौड़, 2 मिनट आराम)<br>Cool-down: 10 मिनट की हल्की दौड़' },
-            { date: '2024-07-23', task: 'Strength Training:<br>Push-ups: 3 सेट x 15 रेप्स<br>Pull-ups: 3 सेट x 10 रेप्स<br>Dumbbell Press: 3 सेट x 12 रेप्स<br>Russian Twists: 3 सेट x 20 रेप्स<br>Side Planks: 3 सेट x 1 मिनट प्रति साइड' },
-            { date: '2024-07-24', task: 'Warm-up: 10 मिनट की हल्की दौड़<br>मुख्य सत्र: 15 मिनट की मध्यम गति से दौड़ (4:30 - 5:00 मिनट प्रति किलोमीटर)<br>Cool-down: 10 मिनट की हल्की दौड़' },
-            { date: '2024-07-25', task: 'Warm-up: 10 मिनट की हल्की दौड़<br>मुख्य सत्र: 5 x 300 मीटर दौड़ (50 - 55 सेकंड प्रति दौड़, 1.5 मिनट आराम)<br>Cool-down: 10 मिनट की हल्की दौड़' },
-            { date: '2024-07-26', task: 'Long Run: 40-50 मिनट की धीमी दौड़ (5:30 - 6:00 मिनट प्रति किलोमीटर)' },
-            { date: '2024-07-27', task: 'Rest or light activity' },
-            { date: '2024-07-28', task: 'Rest' },
-            // Week 5
-            { date: '2024-07-29', task: 'Warm-up: 10 मिनट की हल्की दौड़<br>मुख्य सत्र: 3 x 500 मीटर दौड़ (1:30 - 1:40 मिनट प्रति दौड़, 2 मिनट आराम)<br>Cool-down: 10 मिनट की हल्की दौड़' },
-            { date: '2024-07-30', task: 'Strength Training:<br>Box Jumps: 3 सेट x 15 रेप्स<br>Burpees: 3 सेट x 12 रेप्स<br>Medicine Ball Slams: 3 सेट x 15 रेप्स<br>Mountain Climbers: 3 सेट x 1 मिनट<br>Bicycle Crunches: 3 सेट x 20 रेप्स' },
-            { date: '2024-07-31', task: 'Warm-up: 10 मिनट की हल्की दौड़<br>मुख्य सत्र: 10 x 100 मीटर तेज दौड़ (15 - 17 सेकंड प्रति दौड़, 1 मिनट आराम)<br>Cool-down: 10 मिनट की हल्की दौड़' },
-            { date: '2024-08-01', task: 'Recovery Run: 20-30 मिनट की धीमी दौड़ (5:30 - 6:00 मिनट प्रति किलोमीटर)' },
-            { date: '2024-08-02', task: 'Warm-up: 10 मिनट की हल्की दौड़<br>मुख्य सत्र: 2 x 800 मीटर दौड़ (2:00 - 2:10 मिनट प्रति दौड़, 3 मिनट आराम)<br>Cool-down: 10 मिनट की हल्की दौड़' },
-            { date: '2024-08-03', task: 'Cross-Training: Cycling, swimming, या yoga (45 मिनट)' },
-            { date: '2024-08-04', task: 'Rest' },
-            // Week 6
-            { date: '2024-08-05', task: 'Warm-up: 10 मिनट की हल्की दौड़<br>मुख्य सत्र: 3 x 500 मीटर दौड़ (1:30 - 1:40 मिनट प्रति दौड़, 2 मिनट आराम)<br>Cool-down: 10 मिनट की हल्की दौड़' },
-            { date: '2024-08-06', task: 'Strength Training:<br>Box Jumps: 3 सेट x 15 रेप्स<br>Burpees: 3 सेट x 12 रेप्स<br>Medicine Ball Slams: 3 सेट x 15 रेप्स<br>Mountain Climbers: 3 सेट x 1 मिनट<br>Bicycle Crunches: 3 सेट x 20 रेप्स' },
-            { date: '2024-08-07', task: 'Warm-up: 10 मिनट की हल्की दौड़<br>मुख्य सत्र: 10 x 100 मीटर तेज दौड़ (15 - 17 सेकंड प्रति दौड़, 1 मिनट आराम)<br>Cool-down: 10 मिनट की हल्की दौड़' },
-            { date: '2024-08-08', task: 'Recovery Run: 20-30 मिनट की धीमी दौड़ (5:30 - 6:00 मिनट प्रति किलोमीटर)' },
-            { date: '2024-08-09', task: 'Warm-up: 10 मिनट की हल्की दौड़<br>मुख्य सत्र: 2 x 800 मीटर दौड़ (2:00 - 2:10 मिनट प्रति दौड़, 3 मिनट आराम)<br>Cool-down: 10 मिनट की हल्की दौड़' },
-            { date: '2024-08-10', task: 'Cross-Training: Cycling, swimming, या yoga (45 मिनट)' },
-            { date: '2024-08-11', task: 'Rest' },
-            // Week 7
-            { date: '2024-08-12', task: 'Warm-up: 10 मिनट की हल्की दौड़<br>मुख्य सत्र: 2 x 600 मीटर दौड़ (1:50 - 2:00 मिनट प्रति दौड़, 2 मिनट आराम)<br>Cool-down: 10 मिनट की हल्की दौड़' },
-            { date: '2024-08-13', task: 'Strength Training: Full body workout<br>Push-ups: 3 सेट x 15 रेप्स<br>Pull-ups: 3 सेट x 10 रेप्स<br>Squats: 3 सेट x 12 रेप्स<br>Deadlifts: 3 सेट x 10 रेप्स<br>Planks: 3 सेट x 1 मिनट<br>Russian Twists: 3 सेट x 20 रेप्स' },
-            { date: '2024-08-14', task: 'Warm-up: 10 मिनट की हल्की दौड़<br>मुख्य सत्र: 8 x 150 मीटर तेज दौड़ (20 - 22 सेकंड प्रति दौड़, 45 सेकंड आराम)<br>Cool-down: 10 मिनट की हल्की दौड़' },
-            { date: '2024-08-15', task: 'Recovery Run: 20 मिनट की धीमी दौड़ (5:30 - 6:00 मिनट प्रति किलोमीटर)' },
-            { date: '2024-08-16', task: 'Warm-up: 10 मिनट की हल्की दौड़<br>मुख्य सत्र: 4 x 400 मीटर दौड़ (1:20 - 1:30 मिनट प्रति दौड़, 1 मिनट आराम)<br>Cool-down: 10 मिनट की हल्की दौड़' },
-            { date: '2024-08-17', task: 'Rest or light activity' },
-            { date: '2024-08-18', task: '5 Round and 150*8 Speed Running' },
-            // Week 8
-            { date: '2024-08-19', task: 'Warm-up: 10 मिनट की हल्की दौड़<br>मुख्य सत्र: 2 x 600 मीटर दौड़ (1:50 - 2:00 मिनट प्रति दौड़, 2 मिनट आराम)<br>Cool-down: 10 मिनट की हल्की दौड़' },
-            { date: '2024-08-20', task: 'Strength Training: Full body workout<br>Push-ups: 3 सेट x 15 रेप्स<br>Pull-ups: 3 सेट x 10 रेप्स<br>Squats: 3 सेट x 12 रेप्स<br>Deadlifts: 3 सेट x 10 रेप्स<br>Planks: 3 सेट x 1 मिनट<br>Russian Twists: 3 सेट x 20 रेप्स' },
-            { date: '2024-08-21', task: 'Warm-up: 10 मिनट की हल्की दौड़<br>मुख्य सत्र: 8 x 150 मीटर तेज दौड़ (20 - 22 सेकंड प्रति दौड़, 45 सेकंड आराम)<br>Cool-down: 10 मिनट की हल्की दौड़' },
-            { date: '2024-08-22', task: 'Recovery Run: 20 मिनट की धीमी दौड़ (5:30 - 6:00 मिनट प्रति किलोमीटर)' },
-            { date: '2024-08-23', task: 'Warm-up: 10 मिनट की हल्की दौड़<br>मुख्य सत्र: 4 x 400 मीटर दौड़ (1:20 - 1:30 मिनट प्रति दौड़, 1 मिनट आराम)<br>Cool-down: 10 मिनट की हल्की दौड़' },
-            { date: '2024-08-24', task: 'Rest or light activity' },
-            { date: '2024-08-25', task: 'Rest' }
+                const schedule = [
+            // Week 1: Base Building & Speed Development
+            { date: '2024-09-06', task: 'Base Building & Speed Development:<br>Day 1: Warm-up (10-15 minutes of jogging and dynamic stretches).<br>6 x 400 meters at 85-90% of your current pace.<br>Rest 90 seconds between each repetition.<br>Cool down (10-15 minutes easy jogging).<br><hr> 400 meters (Day 1):<br> You should aim to run each 400 meters in 65-68 seconds (roughly 85-90% of your goal pace).' },
+            { date: '2024-09-07', task: 'Base Building & Speed Development:<br>Day 2: Warm-up.<br>4 x 200 meters at maximum speed (all-out effort).<br>Rest 3 minutes between each rep.<br>Cool down.<br><hr> 200 meters (Day 2):<br> Aim for 28-30 seconds per 200 meters (near maximum speed).' },
+            { date: '2024-09-08', task: 'Base Building & Speed Development:<br>Day 3: Rest or light 30-minute easy run.' },
+            { date: '2024-09-09', task: 'Base Building & Speed Development:<br>Day 4: Warm-up.<br>5 x 300 meters at 85-90% effort.<br>Rest 2 minutes between each rep.<br>Cool down.<br><hr>300 meters (Day 4):<br> Target 48-52 seconds per 300 meters.' },
+            { date: '2024-09-10', task: 'Base Building & Speed Development:<br>Day 5: Hill sprints: 8 x 100 meters uphill at maximum effort.<br>Walk back down for recovery.<br>Cool down.<br><hr>100 meters uphill (Day 5):<br> Since these are sprints, aim to complete each one in 14-16 seconds (max effort).' },
+            { date: '2024-09-11', task: 'Base Building & Speed Development:<br>Day 6: Long run (40-50 minutes easy pace for endurance).' },
+            { date: '2024-09-12', task: 'Base Building & Speed Development:<br>Day 7: Rest or recovery session (swimming, cycling, or light jog).' },
+            // Week 2: Speed and Endurance Mix
+            { date: '2024-09-13', task: 'Speed and Endurance Mix:<br>Day 8: Warm-up.<br>3 x 600 meters at 85% pace.<br>Rest 2-3 minutes between reps.<br><hr>600 meters (Day 8):<br> Run each 600 meters in about 1:35-1:40 minutes (85% effort).' },
+            { date: '2024-09-14', task: 'Speed and Endurance Mix:<br>Day 9: Warm-up.<br>8 x 200 meters sprints with full effort.<br>Rest 2 minutes between reps.<br>Cool down.<br>Cool down.<br><hr>200 meters (Day 9):<br> Similar to Day 2, aim for 28-30 seconds per 200 meters.' },
+            { date: '2024-09-15', task: 'Speed and Endurance Mix:<br>Day 10: Rest or easy 30-minute run.' },
+            { date: '2024-09-16', task: 'Speed and Endurance Mix:<br>Day 11: Warm-up.<br>Fartlek workout: Alternate between 1 minute fast, 2 minutes slow jogging, for 30 minutes.' },
+            { date: '2024-09-17', task: 'Speed and Endurance Mix:<br>Day 12: Warm-up.<br>5 x 400 meters at race pace (targeting your goal time per lap, 62 seconds).<br>Rest 2 minutes between each repetition.<br>Cool down.<br><hr>400 meters (Day 12):<br> This is closer to race pace, so aim for 62-64 seconds per 400 meters.' },
+            { date: '2024-09-18', task: 'Speed and Endurance Mix:<br>Day 13: Long run (50-60 minutes easy pace).' },
+            { date: '2024-09-19', task: 'Speed and Endurance Mix:<br>Day 14: Rest or active recovery (stretching, yoga).' },
+            // Week 3: Sharpening & Tapering
+            { date: '2024-09-20', task: 'Sharpening & Tapering:<br>Day 15: Warm-up.<br>4 x 200 meters at all-out sprint speed.<br>Rest 3 minutes between each.<br>Cool down.<br><hr>200 meters (Day 15):<br> All-out sprints, aiming for 26-28 seconds per 200 meters.' },
+            { date: '2024-09-21', task: 'Sharpening & Tapering:<br>Day 16: Warm-up.<br>3 x 500 meters at race pace.<br>Rest 3 minutes between reps.<br>Cool down.<br><hr>500 meters (Day 16):<br> Target 1:18-1:22 minutes per 500 meters (race pace).' },
+            { date: '2024-09-22', task: 'Sharpening & Tapering:<br>Day 17: Rest or light 20-minute jog.' },
+            { date: '2024-09-23', task: 'Sharpening & Tapering:<br>Day 18: Warm-up.<br>2 x 300 meters at race pace.<br>Rest 3 minutes between reps.<br>Cool down.<br><hr>300 meters (Day 18):<br> Aim for 46-48 seconds per 300 meters.' },
+            { date: '2024-09-24', task: 'Sharpening & Tapering:<br>Day 19: Rest (or short 15-minute jog to keep the legs loose).' },
+            { date: '2024-09-25', task: 'Sharpening & Tapering:<br>Day 20 (Race Day Simulation): Warm-up well.<br>Run 800 meters, targeting your goal of 2:04.<br><hr>Day 20 (Race Day Simulation):<br> Run the full 800 meters in 2 minutes 4 seconds. You need to aim for: <br>First 400 meters: 62 seconds.<br>Second 400 meters: 62 seconds.' },
         ];
 
-        let currentDate = new Date().toISOString().split('T')[0];
+        let currentDate = new Date().toLocaleDateString('en-IN', { timeZone: 'IST' });
         const scheduleContainer = document.getElementById('schedule');
         const currentDateElement = document.getElementById('currentDate');
 
@@ -212,12 +171,14 @@
         // Initial display
         displayTask(currentDate);
 
-        // Countdown to 23 September 2024
+        // Countdown to 23 September 2024 in Indian Time Zone
         const countdownElement = document.getElementById('countdown');
         const targetDate = new Date('2024-09-23T00:00:00');
+        targetDate.setFullYear(2024, 8, 23); // Adjusting for Indian Time Zone
 
         function updateCountdown() {
             const now = new Date();
+            now.setFullYear(now.getFullYear(), now.getMonth(), now.getDate()); // Adjusting for Indian Time Zone
             const timeDifference = targetDate - now;
 
             const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
@@ -229,7 +190,7 @@
 
             if (timeDifference < 0) {
                 clearInterval(countdownInterval);
-                countdownElement.innerHTML = "The date has arrived!";
+                countdownElement.innerHTML = "The date has arrived in IST!";
             }
         }
 
